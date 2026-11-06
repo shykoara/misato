@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Misato Webamp Player</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: transparent;
+      overflow: hidden;
+    }
+  </style>
+  <!-- Webamp CDN Kütüphanesi -->
+  <script src="https://unpkg.com/webamp@1.5.0/built/webamp.bundle.min.js"></script>
+</head>
+<body>
+  <div id="webamp-app"></div>
+
+  <script>
+    const Webamp = window.Webamp;
+
+    if (Webamp.browserIsSupported()) {
+      const webamp = new Webamp({
+        // Dosya adındaki boşluklar tarayıcıda sorun çıkarmaması için encode edildi
+        initialSkin: {
+          url: "Neon%20Genesis%20Evangelion%20-%20Misato%20Cheap%20Thrills.wsz"
+        },
+        initialTracks: [
+          {
+            metaData: {
+              artist: "Evangelion",
+              title: "Misato Katsuragi"
+            },
+            url: "https://raw.githubusercontent.com/captbaritone/webamp/master/packages/webamp/demo/mp3/llama-2.29.mp3",
+            duration: 5
+          }
+        ]
+      });
+
+      webamp.renderWhenReady(document.getElementById('webamp-app'));
+    }
+  </script>
+</body>
+</html>
